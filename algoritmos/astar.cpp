@@ -33,7 +33,6 @@ ESTATISTICAS* loop(ESTADO estado_inicial, ESTATISTICAS* estatisticas){
     NO* no = novoNo(NULL, estado_inicial, NENHUM, 0);
     open.push(no);
     closed.insert(estado_inicial);
-
 #ifdef _debug
 structPointers.push_back(no);
 imprimirEstados(1, &estado_inicial);
@@ -43,7 +42,7 @@ printf("g = %d , h = %d, g+h = %d\n", no->g, no->heuristica, no->g+no->heuristic
     while(!open.empty())
     {
         NO* atual = open.top(); open.pop();
-
+        estatisticas->nodos_visitados++;
         for (auto it = structPointers.begin(); it != structPointers.end(); ++it) {
             if (*it == atual) {
                 structPointers.erase(it);

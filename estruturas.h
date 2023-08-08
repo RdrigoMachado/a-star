@@ -54,6 +54,7 @@ struct EstadoEqual {
 
 struct ESTATISTICAS{
     int nodos_expandidos;
+    int nodos_visitados;
     int comprimento;
     double duracao_segundos;
     float heuristica_media;
@@ -77,6 +78,7 @@ struct PrioridadeCaminhoMaisHeuristica {
         return ((s1->g + s1->heuristica) > (s2->g + s2->heuristica));
     }
 };
+int manhattan(ESTADO estado);
 bool is_objetivo(ESTADO estado);
 NO* novoNo(NO *anterior, ESTADO estado_atual, acoes acao, int g);
 ESTATISTICAS* inicializaEstatisticas(ESTADO estado_inicial);

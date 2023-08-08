@@ -1,7 +1,7 @@
 CC=g++
 CFLAGS=
 CODIGOS=main.cpp utils.cpp estruturas.cpp
-ALGORITMOS=algoritmos/astar.cpp
+ALGORITMOS=algoritmos/astar.cpp algoritmos/idastar.cpp algoritmos/bfs.cpp
 EXECUTAVEL=main
 
 

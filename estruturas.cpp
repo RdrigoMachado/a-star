@@ -68,6 +68,7 @@ ESTATISTICAS* inicializaEstatisticas(ESTADO estado_inicial)
     ESTATISTICAS* estatisticas = (ESTATISTICAS*) malloc(sizeof(ESTATISTICAS));
     estatisticas->inicio = std::chrono::high_resolution_clock::now();
     estatisticas->nodos_expandidos = 0;
+    estatisticas->nodos_visitados = 0;
     estatisticas->comprimento = 0;
     estatisticas->heuristica_media = 0;
     estatisticas->duracao_segundos = 0;

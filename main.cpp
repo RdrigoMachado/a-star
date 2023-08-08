@@ -2,6 +2,8 @@
 #include "estruturas.h"
 #include "utils.h"
 #include "algoritmos/astar.h"
+#include "algoritmos/idastar.h"
+#include "algoritmos/bfs.h"
 
 using namespace std;
 
@@ -9,14 +11,16 @@ enum PUZZLE { PUZZLE8, PUZZLE15 };
 
 void imprimiResultados(ESTATISTICAS* estatisticas){
     if(estatisticas->heuristica_media == 0)
-        printf("%d,%d,%.9f,0,%d\n", 
+        printf("%d,%d,%d,%.9f,0,%d\n", 
             estatisticas->nodos_expandidos, 
+            estatisticas->nodos_visitados, 
             estatisticas->comprimento,
             estatisticas->duracao_segundos,
             estatisticas->heuristica_inicial);
     else
-        printf("%d,%d,%.9f,%.5f,%d\n", 
+        printf("%d,%d,%d,%.9f,%.5f,%d\n", 
             estatisticas->nodos_expandidos, 
+            estatisticas->nodos_visitados, 
             estatisticas->comprimento,
             estatisticas->duracao_segundos, 
             estatisticas->heuristica_media,
@@ -34,20 +38,20 @@ int main(int argc, char* argv[]){
     //                 {3, 8, 5}
     //             }
     // };
-    ESTADO estado_inicial {
-        .posicao={
-                    {5, 0, 2},
-                    {6, 4, 8},
-                    {1, 7, 3}
-                }
-    };
     // ESTADO estado_inicial {
     //     .posicao={
-    //                 {2, 4, 7},
-    //                 {0, 3, 6},
-    //                 {8, 1, 5}
+    //                 {5, 0, 2},
+    //                 {6, 4, 8},
+    //                 {1, 7, 3}
     //             }
     // };
+    ESTADO estado_inicial {
+        .posicao={
+                    {2, 4, 7},
+                    {0, 3, 6},
+                    {8, 1, 5}
+                }
+    };
 
 
 
@@ -74,9 +78,30 @@ int main(int argc, char* argv[]){
     //     atual = open.top(); open.pop();
     //     printf("g = %d , h = %d, g+h = %d\n" ,atual->g, atual->heuristica, atual->g+atual->heuristica);
        
-
+    printf("ASTAR\n");
     ESTATISTICAS* estatisticas = busca_ASTAR(estado_inicial);                
     imprimiResultados(estatisticas);
+    
+    ESTADO estado_inicial2 {
+          .posicao={
+                    {2, 4, 7},
+                    {0, 3, 6},
+                    {8, 1, 5}
+                }
+    };
+    printf("BFS\n");
+    ESTATISTICAS* estatisticas2 = busca_BFS(estado_inicial2);                
+    imprimiResultados(estatisticas2);
 
+     ESTADO estado_inicial3 {
+          .posicao={
+                    {2, 4, 7},
+                    {0, 3, 6},
+                    {8, 1, 5}
+                }
+    };
+    printf("IDA\n");
+    ESTATISTICAS* estatisticas3 = busca_IDA(estado_inicial3);                
+    imprimiResultados(estatisticas3);
     return 0;
 }
