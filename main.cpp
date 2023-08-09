@@ -31,21 +31,63 @@ void imprimiResultados(ESTATISTICAS* estatisticas){
 
 int main(int argc, char* argv[]){
 
-    // ESTADO estado_inicial {
+    // ESTADO estado_inicial1 {
     //     .posicao={
     //                 {0, 6, 1},
     //                 {7, 4, 2},
     //                 {3, 8, 5}
     //             }
     // };
-    // ESTADO estado_inicial {
+    //  ESTADO estado_inicial2 {
+    //     .posicao={
+    //                 {0, 6, 1},
+    //                 {7, 4, 2},
+    //                 {3, 8, 5}
+    //             }
+    // };
+    //  ESTADO estado_inicial3 {
+    //     .posicao={
+    //                 {0, 6, 1},
+    //                 {7, 4, 2},
+    //                 {3, 8, 5}
+    //             }
+    // };
+    // ESTADO estado_inicial1 {
     //     .posicao={
     //                 {5, 0, 2},
     //                 {6, 4, 8},
     //                 {1, 7, 3}
     //             }
     // };
-    ESTADO estado_inicial {
+    // ESTADO estado_inicial2 {
+    //     .posicao={
+    //                 {5, 0, 2},
+    //                 {6, 4, 8},
+    //                 {1, 7, 3}
+    //             }
+    // };
+    // ESTADO estado_inicial3 {
+    //     .posicao={
+    //                 {5, 0, 2},
+    //                 {6, 4, 8},
+    //                 {1, 7, 3}
+    //             }
+    // };
+    ESTADO estado_inicial1 {
+        .posicao={
+                    {2, 4, 7},
+                    {0, 3, 6},
+                    {8, 1, 5}
+                }
+    };
+    ESTADO estado_inicial2 {
+        .posicao={
+                    {2, 4, 7},
+                    {0, 3, 6},
+                    {8, 1, 5}
+                }
+    };
+    ESTADO estado_inicial3 {
         .posicao={
                     {2, 4, 7},
                     {0, 3, 6},
@@ -79,27 +121,13 @@ int main(int argc, char* argv[]){
     //     printf("g = %d , h = %d, g+h = %d\n" ,atual->g, atual->heuristica, atual->g+atual->heuristica);
        
     printf("ASTAR\n");
-    ESTATISTICAS* estatisticas = busca_ASTAR(estado_inicial);                
+    ESTATISTICAS* estatisticas = busca_ASTAR(estado_inicial1);                
     imprimiResultados(estatisticas);
     
-    ESTADO estado_inicial2 {
-          .posicao={
-                    {2, 4, 7},
-                    {0, 3, 6},
-                    {8, 1, 5}
-                }
-    };
     printf("BFS\n");
     ESTATISTICAS* estatisticas2 = busca_BFS(estado_inicial2);                
     imprimiResultados(estatisticas2);
 
-     ESTADO estado_inicial3 {
-          .posicao={
-                    {2, 4, 7},
-                    {0, 3, 6},
-                    {8, 1, 5}
-                }
-    };
     printf("IDA\n");
     ESTATISTICAS* estatisticas3 = busca_IDA(estado_inicial3);                
     imprimiResultados(estatisticas3);
